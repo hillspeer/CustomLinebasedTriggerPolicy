@@ -8,17 +8,21 @@ import java.util.stream.Stream;
 
 public class Test {
 
-    Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-
+    Logger logger = LogManager.getLogger("index");
+    Logger rootLogger = LogManager.getLogger(LogManager.getRootLogger());
 
     public static void main(String[] args) {
 
         Test t = new Test();//
 
-        Stream<Integer> stream = IntStream.range(1,100).boxed();
+        Stream<Integer> stream = IntStream.range(1,60).boxed();
 
         stream.forEach( v ->{
-            t.logger.trace("Hello "+v);
+            if(v%2==1) {
+                t.logger.trace("Hello " + v);
+            }else{
+                t.rootLogger.trace("Hello " + v);
+            }
         });
 
 

@@ -23,8 +23,12 @@
         </RollingFile>
     </Appenders>
     <Loggers>
+        <Logger name="index" level="trace" additivity="false">
+            <appender-ref ref="RollingFile" level="trace"/>
+        </Logger>
         <Root level="trace">
-            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="Console"/>
         </Root>
+
     </Loggers>
 </Configuration>

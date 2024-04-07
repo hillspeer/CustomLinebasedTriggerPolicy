@@ -35,7 +35,6 @@ public class MaxLineBasedTriggeringPolicy implements TriggeringPolicy {
 
     @Override
     public boolean isTriggeringEvent(final LogEvent event) {
-        System.out.println(count);
         if(counter>=count) {
             counter=1;
             return true;
