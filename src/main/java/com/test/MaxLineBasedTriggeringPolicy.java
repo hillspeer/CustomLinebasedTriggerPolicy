@@ -30,6 +30,7 @@ public class MaxLineBasedTriggeringPolicy implements TriggeringPolicy {
     @Override
     public void initialize(final RollingFileManager manager) {
         this.manager = manager;
+        //manager.rollover();
         //timeBasedTriggeringPolicy.initialize(manager);
     }
 
