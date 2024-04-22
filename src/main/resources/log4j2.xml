@@ -4,7 +4,9 @@
         <Console name="Console">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-
+        <Socket name="Socket" host="localhost" port="12345">
+            <JsonLayout compact="true" eventEol="true" />
+        </Socket>
         <RollingFile name="RollingFile" fileName="/opt/source/test-${hostName}.log"
                      filePattern="/opt/source/test-${hostName}-%d{yyyy-MM-dd-HH-mm-ss}.log" >
             <PatternLayout>
@@ -35,7 +37,7 @@
             <appender-ref ref="RollingFile" level="trace"/>
         </Logger>
         <Root level="trace">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Socket"/>
         </Root>
 
     </Loggers>

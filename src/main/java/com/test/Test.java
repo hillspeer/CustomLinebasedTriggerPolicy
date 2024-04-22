@@ -3,6 +3,7 @@ package com.test;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.ParameterizedMessage;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,8 @@ public class Test {
     public static void main(String[] args) {
         String hello = args[0];
         int max = (null==args[1])?100:Integer.parseInt(args[1]);
+        String param = (args.length==3 && null==args[2])?"TUINDEX":args[2];
+
         Test t = new Test();
 
         Stream<Integer> stream = IntStream.range(1,max).boxed();
@@ -45,7 +48,8 @@ public class Test {
 
             //t.l.lock();
                 //if(v%2==1) {
-                    t.logger.trace(message );
+                    t.logger.trace(new ParameterizedMessage("{}"+message,param ));
+
                     t.rootLogger.trace(message.substring(message.indexOf("{")));
                 /*}else{
                     t.rootLogger.trace(message.substring(message.indexOf("{")));
